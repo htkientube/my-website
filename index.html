@@ -13,39 +13,34 @@
     body { 
       font-family: 'Segoe UI', system-ui, sans-serif; 
       scroll-behavior: smooth;
-      cursor: none; /* Ẩn cursor mặc định */
+      cursor: none;
     }
 
-    /* === CUSTOM CURSOR === */
+    /* Custom Cursor */
     #custom-cursor {
       position: fixed;
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       border: 2px solid rgb(59 130 246);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
-      transition: all 0.1s ease;
       mix-blend-mode: difference;
-      display: none;
+      transition: width 0.2s, height 0.2s;
     }
 
-    #custom-cursor.dot {
-      width: 8px;
-      height: 8px;
-      background: rgb(59 130 246);
-      border: none;
-    }
-
-    #custom-cursor.hover {
-      transform: translate(-50%, -50%) scale(1.8);
-      background: rgba(59, 130, 246, 0.2);
-      border-color: rgb(147 197 253);
-    }
-
-    @media (min-width: 768px) {
-      #custom-cursor { display: block; }
+    /* Trail Dots */
+    .trail-dot {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: rgb(147 197 253);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
@@ -89,32 +84,53 @@
     </div>
   </section>
 
-  <!-- Các section khác (About, Skills, Projects, Contact) giữ nguyên như trước -->
-  <!-- Bạn có thể dán phần nội dung cũ vào đây -->
+  <!-- Các phần khác (About, Skills, Projects...) bạn có thể thêm vào đây -->
 
   <footer class="py-10 text-center text-gray-500 text-sm">
     © 2026 Alos Louis • Made with ❤️
   </footer>
 
   <script>
-    // Custom Cursor
+    // Custom Cursor + Trail Effect
     const cursor = document.getElementById('custom-cursor');
-    let timeout;
+    const trails = [];
+    const trailCount = 8;
+
+    // Tạo các dot trail
+    for (let i = 0; i < trailCount; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'trail-dot';
+      document.body.appendChild(dot);
+      trails.push(dot);
+    }
+
+    let mouseX = 0, mouseY = 0;
+    let prevX = 0, prevY = 0;
 
     document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+
+      // Update trail
+      trails.forEach((dot, index) => {
+        const delay = index * 8;
+        dot.style.left = (prevX + (mouseX - prevX) * (index / trailCount)) + 'px';
+        dot.style.top = (prevY + (mouseY - prevY) * (index / trailCount)) + 'px';
+        dot.style.opacity = (1 - index / trailCount) * 0.6;
+      });
+
+      prevX = mouseX;
+      prevY = mouseY;
     });
 
-    // Hover effect
-    const hoverElements = document.querySelectorAll('.cursor-hover, a, button, .project-card');
+    // Hover effect cho cursor to hơn
+    const hoverElements = document.querySelectorAll('a, button, .project-card, .cursor-hover');
     hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover');
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover');
-      });
+      el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(1.6)');
+      el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
     });
 
     // Theme Toggle
