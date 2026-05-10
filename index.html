@@ -28,12 +28,11 @@
 </head>
 <body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
 
-  <!-- Navbar Đầy Đủ -->
+  <!-- Navbar (đầy đủ) -->
   <nav class="fixed top-0 w-full bg-white/90 dark:bg-gray-950/90 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-800">
     <div class="max-w-6xl mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
         <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Alos Louis</h1>
-
         <div class="hidden md:flex space-x-8 text-lg">
           <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400">Về tôi</a>
           <a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400">Kỹ năng</a>
@@ -42,7 +41,6 @@
           <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400">Dự án</a>
           <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400">Liên hệ</a>
         </div>
-
         <div class="flex items-center gap-4">
           <button id="theme-toggle" class="text-2xl p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:rotate-12 active:scale-90">
             <i class="fa-solid fa-moon transition-transform duration-500"></i>
@@ -53,7 +51,218 @@
         </div>
       </div>
 
-      <!-- Mobile Menu -->
       <div id="mobile-menu" class="hidden md:hidden mt-4 py-6 border-t border-gray-200 dark:border-gray-700">
         <div class="flex flex-col space-y-6 text-lg px-2">
-          <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 py-2 block">V
+          <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 py-2 block">Về tôi</a>
+          <a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400 py-2 block">Kỹ năng</a>
+          <a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400 py-2 block">Kinh nghiệm</a>
+          <a href="#education" class="hover:text-blue-600 dark:hover:text-blue-400 py-2 block">Học vấn</a>
+          <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400 py-2 block">Dự án</a>
+          <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 py-2 block">Liên hệ</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero, About, Skills, Experience, Education... (giữ nguyên) -->
+  <!-- Chỉ hiển thị phần Dự án đầy đủ ở đây -->
+
+  <section id="projects" class="py-24 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">Dự án nổi bật</h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-16">Những dự án mình đã thực hiện cùng chi tiết kỹ thuật</p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Dự án 1 -->
+        <div class="project-card bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl group">
+          <div class="relative">
+            <img src="https://via.placeholder.com/600x400/3b82f6/ffffff?text=Portfolio" class="project-img w-full h-64 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <div class="p-7">
+            <h3 class="font-bold text-2xl mb-3">Portfolio Cá Nhân</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">Website giới thiệu bản thân hiện đại, responsive hoàn toàn.</p>
+            
+            <div class="mb-5">
+              <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">Công nghệ sử dụng</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 px-3 py-1 rounded-full">Tailwind CSS</span>
+                <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 px-3 py-1 rounded-full">JavaScript</span>
+                <span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 px-3 py-1 rounded-full">HTML5</span>
+              </div>
+            </div>
+
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              <strong>Chi tiết kỹ thuật:</strong>
+              <ul class="list-disc list-inside mt-2 space-y-1">
+                <li>Dark / Light mode toggle</li>
+                <li>Mobile menu animation mượt</li>
+                <li>Responsive trên mọi thiết bị</li>
+                <li>Deploy trên GitHub Pages + Vercel</li>
+              </ul>
+            </div>
+
+            <div class="flex gap-3">
+              <a href="#" class="flex-1 bg-blue-600 text-white py-3 rounded-2xl text-center font-medium hover:bg-blue-700">Xem Demo</a>
+              <a href="#" class="flex-1 border py-3 rounded-2xl text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-700">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dự án 2 -->
+        <div class="project-card bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl group">
+          <div class="relative">
+            <img src="https://via.placeholder.com/600x400/10b981/ffffff?text=Fashion+Store" class="project-img w-full h-64 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <div class="p-7">
+            <h3 class="font-bold text-2xl mb-3">Fashion Store</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">Nền tảng thương mại điện tử bán quần áo.</p>
+            
+            <div class="mb-5">
+              <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">Công nghệ sử dụng</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs bg-emerald-100 dark:bg-emerald-900 text-emerald-700 px-3 py-1 rounded-full">Next.js</span>
+                <span class="text-xs bg-emerald-100 dark:bg-emerald-900 text-emerald-700 px-3 py-1 rounded-full">Tailwind CSS</span>
+                <span class="text-xs bg-emerald-100 dark:bg-emerald-900 text-emerald-700 px-3 py-1 rounded-full">Fake API</span>
+              </div>
+            </div>
+
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              <strong>Chi tiết kỹ thuật:</strong>
+              <ul class="list-disc list-inside mt-2 space-y-1">
+                <li>Giỏ hàng + tính tổng tiền realtime</li>
+                <li>Lọc và tìm kiếm sản phẩm</li>
+                <li>Responsive + Dark mode</li>
+                <li>Checkout simulation</li>
+              </ul>
+            </div>
+
+            <div class="flex gap-3">
+              <a href="#" class="flex-1 bg-blue-600 text-white py-3 rounded-2xl text-center font-medium hover:bg-blue-700">Xem Demo</a>
+              <a href="#" class="flex-1 border py-3 rounded-2xl text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-700">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dự án 3 -->
+        <div class="project-card bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl group">
+          <div class="relative">
+            <img src="https://via.placeholder.com/600x400/8b5cf6/ffffff?text=TaskFlow" class="project-img w-full h-64 object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <div class="p-7">
+            <h3 class="font-bold text-2xl mb-3">TaskFlow - Quản lý công việc</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">Ứng dụng quản lý nhiệm vụ cá nhân và nhóm.</p>
+            
+            <div class="mb-5">
+              <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">Công nghệ sử dụng</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs bg-violet-100 dark:bg-violet-900 text-violet-700 px-3 py-1 rounded-full">React</span>
+                <span class="text-xs bg-violet-100 dark:bg-violet-900 text-violet-700 px-3 py-1 rounded-full">TypeScript</span>
+                <span class="text-xs bg-violet-100 dark:bg-violet-900 text-violet-700 px-3 py-1 rounded-full">LocalStorage</span>
+              </div>
+            </div>
+
+            <div class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              <strong>Chi tiết kỹ thuật:</strong>
+              <ul class="list-disc list-inside mt-2 space-y-1">
+                <li>Kéo thả (Drag & Drop)</li>
+                <li>Lưu dữ liệu cục bộ</li>
+                <li>Thống kê tiến độ</li>
+                <li>Filter theo trạng thái</li>
+              </ul>
+            </div>
+
+            <div class="flex gap-3">
+              <a href="#" class="flex-1 bg-blue-600 text-white py-3 rounded-2xl text-center font-medium hover:bg-blue-700">Xem Demo</a>
+              <a href="#" class="flex-1 border py-3 rounded-2xl text-center font-medium hover:bg-gray-100 dark:hover:bg-gray-700">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Liên hệ -->
+  <section id="contact" class="py-24 bg-gray-100 dark:bg-gray-950">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8">Liên hệ với mình</h2>
+      <a href="mailto:your.email@gmail.com" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-10 py-5 rounded-full text-xl font-medium">
+        Gửi email cho mình
+      </a>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-gray-500 dark:text-gray-400">
+    © 2026 Alos Louis. Made with ❤️
+  </footer>
+
+  <script>
+    // Script Theme + Mobile Menu
+    const themeToggle = document.getElementById('theme-toggle');
+    const icon = themeToggle.querySelector('i');
+    const html = document.documentElement;
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        icon.classList.replace('fa-moon', 'fa-sun');
+        icon.classList.add('rotate-180');
+        localStorage.theme = 'dark';
+      } else {
+        html.classList.remove('dark');
+        icon.classList.replace('fa-sun', 'fa-moon');
+        icon.classList.remove('rotate-180');
+        localStorage.theme = 'light';
+      }
+    }
+
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggle.style.transform = 'rotate(180deg)';
+      setTimeout(() => {
+        if (html.classList.contains('dark')) setTheme('light');
+        else setTheme('dark');
+        themeToggle.style.transform = 'rotate(0deg)';
+      }, 180);
+    });
+
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let isOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        mobileMenu.classList.remove('hidden');
+        requestAnimationFrame(() => mobileMenu.classList.add('open'));
+        menuBtn.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+        menuBtn.classList.add('rotate-90');
+      } else {
+        mobileMenu.classList.remove('open');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 400);
+        menuBtn.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+        menuBtn.classList.remove('rotate-90');
+      }
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        setTimeout(() => mobileMenu.classList.add('hidden'), 400);
+        menuBtn.innerHTML = `<i class="fa-solid fa-bars"></i>`;
+        menuBtn.classList.remove('rotate-90');
+        isOpen = false;
+      });
+    });
+  </script>
+</body>
+</html>
