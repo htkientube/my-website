@@ -11,36 +11,52 @@
     .hero-bg { background: linear-gradient(135deg, #1e2937 0%, #334155 100%); }
     .dark .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
 
+    /* Card Dự Án Cải Tiến */
+    .project-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .project-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    }
+    .project-img {
+      transition: all 0.5s ease;
+    }
+    .project-card:hover .project-img {
+      transform: scale(1.08);
+    }
+    .project-overlay {
+      transition: all 0.4s ease;
+    }
+    .project-card:hover .project-overlay {
+      opacity: 0.85;
+    }
+
     #mobile-menu {
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       transform-origin: top center;
-      will-change: transform, opacity;
     }
     #mobile-menu.open {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
-    #mobile-menu:not(.open) {
-      opacity: 0;
-      transform: translateY(-20px) scale(0.95);
-    }
   </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
 
-  <!-- Navbar -->
+  <!-- Navbar (giữ nguyên) -->
   <nav class="fixed top-0 w-full bg-white/90 dark:bg-gray-950/90 backdrop-blur-md z-50 border-b border-gray-200 dark:border-gray-800">
     <div class="max-w-6xl mx-auto px-6 py-4">
       <div class="flex justify-between items-center">
         <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Alos Louis</h1>
 
         <div class="hidden md:flex space-x-8 text-lg">
-          <a href="#about" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Về tôi</a>
-          <a href="#skills" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Kỹ năng</a>
-          <a href="#experience" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Kinh nghiệm</a>
-          <a href="#education" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Học vấn</a>
-          <a href="#projects" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Dự án</a>
-          <a href="#contact" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Liên hệ</a>
+          <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400">Về tôi</a>
+          <a href="#skills" class="hover:text-blue-600 dark:hover:text-blue-400">Kỹ năng</a>
+          <a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400">Kinh nghiệm</a>
+          <a href="#education" class="hover:text-blue-600 dark:hover:text-blue-400">Học vấn</a>
+          <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400">Dự án</a>
+          <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400">Liên hệ</a>
         </div>
 
         <div class="flex items-center gap-4">
@@ -66,87 +82,96 @@
     </div>
   </nav>
 
-  <!-- Hero, About, Skills, Experience, Education giữ nguyên như trước -->
-  <!-- (Để tiết kiệm chỗ, mình chỉ cập nhật phần Projects ở dưới) -->
+  <!-- Các phần trước giữ nguyên (About, Skills, Experience, Education) -->
+  <!-- Chỉ cập nhật phần Projects -->
 
-  <!-- ==================== DỰ ÁN NỔI BẬT (ĐÃ CẢI THIỆN CHI TIẾT) ==================== -->
+  <!-- DỰ ÁN NỔI BẬT - THIẾT KẾ CARD ĐÃ CẢI THIỆN -->
   <section id="projects" class="py-24 bg-white dark:bg-gray-900">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-4">Dự án nổi bật</h2>
-      <p class="text-center text-gray-600 dark:text-gray-400 mb-12">Những dự án mình tự hào nhất</p>
+      <p class="text-center text-gray-600 dark:text-gray-400 mb-16">Những dự án mình tâm huyết nhất</p>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- Dự án 1 -->
-        <div class="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-          <img src="https://via.placeholder.com/600x400/3b82f6/ffffff?text=Portfolio+Website" 
-               class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h3 class="font-semibold text-2xl mb-2">Portfolio Cá Nhân</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-              Website giới thiệu bản thân hiện đại với Dark/Light mode, animation mượt, và mobile-first.
+        <!-- Card 1 -->
+        <div class="project-card bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl group">
+          <div class="relative">
+            <img src="https://via.placeholder.com/600x400/3b82f6/ffffff?text=Portfolio+Website" 
+                 class="project-img w-full h-64 object-cover">
+            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100"></div>
+          </div>
+          <div class="p-7">
+            <h3 class="font-bold text-2xl mb-3">Portfolio Cá Nhân</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-5 line-clamp-3">
+              Website giới thiệu bản thân hiện đại, hỗ trợ Dark/Light mode, animation mượt mà và hoàn toàn responsive.
             </p>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="text-xs bg-blue-100 dark:bg-blue-900 px-3 py-1 rounded-full">Tailwind CSS</span>
-              <span class="text-xs bg-blue-100 dark:bg-blue-900 px-3 py-1 rounded-full">JavaScript</span>
-              <span class="text-xs bg-blue-100 dark:bg-blue-900 px-3 py-1 rounded-full">HTML5</span>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-full">Tailwind CSS</span>
+              <span class="text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-full">JavaScript</span>
             </div>
-            <div class="flex gap-4">
-              <a href="#" target="_blank" class="flex items-center gap-2 text-blue-600 hover:text-blue-700">
+            <div class="flex gap-3">
+              <a href="#" target="_blank" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-2xl font-medium transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem Demo
               </a>
-              <a href="#" target="_blank" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-800">
-                <i class="fa-brands fa-github"></i> GitHub
+              <a href="#" target="_blank" class="flex-1 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-center py-3 rounded-2xl font-medium transition flex items-center justify-center gap-2">
+                <i class="fa-brands fa-github"></i> Code
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Dự án 2 -->
-        <div class="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-          <img src="https://via.placeholder.com/600x400/10b981/ffffff?text=E-commerce+Shop" 
-               class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h3 class="font-semibold text-2xl mb-2">Fashion Store</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-              Website bán quần áo trực tuyến đầy đủ chức năng giỏ hàng, lọc sản phẩm, thanh toán giả lập.
+        <!-- Card 2 & 3 tương tự (bạn có thể copy và thay nội dung) -->
+        <!-- Mình để 2 card mẫu nữa cho bạn dễ hình dung -->
+
+        <!-- Card 2 -->
+        <div class="project-card bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl group">
+          <div class="relative">
+            <img src="https://via.placeholder.com/600x400/10b981/ffffff?text=Fashion+Store" 
+                 class="project-img w-full h-64 object-cover">
+            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100"></div>
+          </div>
+          <div class="p-7">
+            <h3 class="font-bold text-2xl mb-3">Fashion Store</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-5 line-clamp-3">
+              Website bán hàng thời trang hiện đại với giỏ hàng, lọc sản phẩm và checkout.
             </p>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="text-xs bg-emerald-100 dark:bg-emerald-900 px-3 py-1 rounded-full">Next.js</span>
-              <span class="text-xs bg-emerald-100 dark:bg-emerald-900 px-3 py-1 rounded-full">Tailwind</span>
-              <span class="text-xs bg-emerald-100 dark:bg-emerald-900 px-3 py-1 rounded-full">Fake API</span>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-xs font-medium bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300 px-3 py-1.5 rounded-full">Next.js</span>
+              <span class="text-xs font-medium bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300 px-3 py-1.5 rounded-full">Tailwind</span>
             </div>
-            <div class="flex gap-4">
-              <a href="#" target="_blank" class="flex items-center gap-2 text-blue-600 hover:text-blue-700">
+            <div class="flex gap-3">
+              <a href="#" target="_blank" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-2xl font-medium transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem Demo
               </a>
-              <a href="#" target="_blank" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-800">
-                <i class="fa-brands fa-github"></i> GitHub
+              <a href="#" target="_blank" class="flex-1 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-center py-3 rounded-2xl font-medium transition flex items-center justify-center gap-2">
+                <i class="fa-brands fa-github"></i> Code
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Dự án 3 -->
-        <div class="group bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-          <img src="https://via.placeholder.com/600x400/8b5cf6/ffffff?text=Task+Management" 
-               class="w-full h-56 object-cover">
-          <div class="p-6">
-            <h3 class="font-semibold text-2xl mb-2">TaskFlow - Quản lý công việc</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-              Ứng dụng quản lý nhiệm vụ với tính năng kéo thả, nhắc nhở, thống kê tiến độ thời gian thực.
+        <!-- Card 3 -->
+        <div class="project-card bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl group">
+          <div class="relative">
+            <img src="https://via.placeholder.com/600x400/8b5cf6/ffffff?text=Task+Management" 
+                 class="project-img w-full h-64 object-cover">
+            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100"></div>
+          </div>
+          <div class="p-7">
+            <h3 class="font-bold text-2xl mb-3">TaskFlow</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-5 line-clamp-3">
+              Ứng dụng quản lý công việc với kéo thả, thống kê và nhắc nhở thông minh.
             </p>
-            <div class="flex flex-wrap gap-2 mb-5">
-              <span class="text-xs bg-violet-100 dark:bg-violet-900 px-3 py-1 rounded-full">React</span>
-              <span class="text-xs bg-violet-100 dark:bg-violet-900 px-3 py-1 rounded-full">Tailwind</span>
-              <span class="text-xs bg-violet-100 dark:bg-violet-900 px-3 py-1 rounded-full">LocalStorage</span>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="text-xs font-medium bg-violet-100 dark:bg-violet-900 text-violet-700 dark:text-violet-300 px-3 py-1.5 rounded-full">React</span>
+              <span class="text-xs font-medium bg-violet-100 dark:bg-violet-900 text-violet-700 dark:text-violet-300 px-3 py-1.5 rounded-full">TypeScript</span>
             </div>
-            <div class="flex gap-4">
-              <a href="#" target="_blank" class="flex items-center gap-2 text-blue-600 hover:text-blue-700">
+            <div class="flex gap-3">
+              <a href="#" target="_blank" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-2xl font-medium transition flex items-center justify-center gap-2">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Xem Demo
               </a>
-              <a href="#" target="_blank" class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-800">
-                <i class="fa-brands fa-github"></i> GitHub
+              <a href="#" target="_blank" class="flex-1 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 text-center py-3 rounded-2xl font-medium transition flex items-center justify-center gap-2">
+                <i class="fa-brands fa-github"></i> Code
               </a>
             </div>
           </div>
@@ -171,8 +196,9 @@
     © 2026 Alos Louis. Made with ❤️
   </footer>
 
+  <!-- Script -->
   <script>
-    // Script (Theme + Mobile Menu)
+    // Theme Toggle + Mobile Menu (giữ nguyên)
     const themeToggle = document.getElementById('theme-toggle');
     const icon = themeToggle.querySelector('i');
     const html = document.documentElement;
