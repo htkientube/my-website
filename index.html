@@ -16,6 +16,26 @@
       cursor: none;
     }
 
+    /* Parallax Background */
+    .hero-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parallax-layer {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.1s linear;
+      will-change: transform;
+    }
+
+    .layer-1 { background-image: url('https://picsum.photos/id/1015/2000/1200'); opacity: 0.15; }
+    .layer-2 { background-image: url('https://picsum.photos/id/201/2000/1200'); opacity: 0.1; }
+    .layer-3 { background-image: url('https://picsum.photos/id/237/2000/1200'); opacity: 0.08; }
+
     /* Custom Cursor */
     #custom-cursor {
       position: fixed;
@@ -30,7 +50,6 @@
       transition: width 0.2s, height 0.2s;
     }
 
-    /* Trail Dots */
     .trail-dot {
       position: fixed;
       width: 6px;
@@ -70,9 +89,14 @@
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero-bg min-h-screen flex items-center pt-20">
-    <div class="max-w-6xl mx-auto px-6 text-center">
+  <!-- Hero with Parallax -->
+  <section id="hero" class="hero-bg min-h-screen flex items-center relative">
+    <!-- Parallax Layers -->
+    <div class="parallax-layer layer-1" id="layer1"></div>
+    <div class="parallax-layer layer-2" id="layer2"></div>
+    <div class="parallax-layer layer-3" id="layer3"></div>
+
+    <div class="max-w-6xl mx-auto px-6 text-center relative z-10 pt-20">
       <h2 class="text-5xl md:text-7xl font-bold mb-6">Xin chào, mình là <span class="text-blue-400">Alos Louis</span></h2>
       <p class="text-2xl md:text-3xl text-gray-400 mb-8">Full-Stack Developer</p>
       <p class="max-w-2xl mx-auto text-lg text-gray-300 mb-12">Tạo ra những website đẹp, nhanh và mang lại giá trị thực sự.</p>
@@ -84,19 +108,37 @@
     </div>
   </section>
 
-  <!-- Các phần khác (About, Skills, Projects...) bạn có thể thêm vào đây -->
+  <!-- Các section khác -->
+  <section id="about" class="py-24 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Về tôi</h2>
+      <!-- Nội dung về tôi -->
+    </div>
+  </section>
 
   <footer class="py-10 text-center text-gray-500 text-sm">
     © 2026 Alos Louis • Made with ❤️
   </footer>
 
   <script>
-    // Custom Cursor + Trail Effect
+    // Parallax Effect
+    const layer1 = document.getElementById('layer1');
+    const layer2 = document.getElementById('layer2');
+    const layer3 = document.getElementById('layer3');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      layer1.style.transform = `translateY(${scrollY * 0.2}px)`;
+      layer2.style.transform = `translateY(${scrollY * 0.35}px)`;
+      layer3.style.transform = `translateY(${scrollY * 0.5}px)`;
+    });
+
+    // Custom Cursor + Trail
     const cursor = document.getElementById('custom-cursor');
     const trails = [];
     const trailCount = 8;
 
-    // Tạo các dot trail
     for (let i = 0; i < trailCount; i++) {
       const dot = document.createElement('div');
       dot.className = 'trail-dot';
@@ -114,7 +156,6 @@
       cursor.style.left = mouseX + 'px';
       cursor.style.top = mouseY + 'px';
 
-      // Update trail
       trails.forEach((dot, index) => {
         const delay = index * 8;
         dot.style.left = (prevX + (mouseX - prevX) * (index / trailCount)) + 'px';
@@ -126,10 +167,9 @@
       prevY = mouseY;
     });
 
-    // Hover effect cho cursor to hơn
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .cursor-hover');
-    hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(1.6)');
+    // Hover effect
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(1.8)');
       el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
     });
 
