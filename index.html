@@ -3,64 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Alos Louis - Portfolio cá nhân">
   <title>Alos Louis | Full-Stack Developer</title>
-  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
   <style>
-    body { 
-      font-family: 'Segoe UI', system-ui, sans-serif; 
-      scroll-behavior: smooth;
-      cursor: none;
-    }
-
-    /* Parallax Background */
+    body { font-family: 'Segoe UI', system-ui, sans-serif; scroll-behavior: smooth; cursor: none; }
+    
     .hero-bg {
-      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+      background: radial-gradient(circle at center, #1e2937 0%, #0f172a 70%);
       position: relative;
       overflow: hidden;
     }
 
-    .parallax-layer {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.1s linear;
-      will-change: transform;
+    canvas#particles { 
+      position: absolute; 
+      top: 0; left: 0; 
+      width: 100%; height: 100%; 
+      z-index: 1; 
+      opacity: 0.85;
     }
 
-    .layer-1 { background-image: url('https://picsum.photos/id/1015/2000/1200'); opacity: 0.15; }
-    .layer-2 { background-image: url('https://picsum.photos/id/201/2000/1200'); opacity: 0.1; }
-    .layer-3 { background-image: url('https://picsum.photos/id/237/2000/1200'); opacity: 0.08; }
-
-    /* Custom Cursor */
-    #custom-cursor {
-      position: fixed;
-      width: 28px;
-      height: 28px;
-      border: 2px solid rgb(59 130 246);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference;
-      transition: width 0.2s, height 0.2s;
-    }
-
-    .trail-dot {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      background: rgb(147 197 253);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      opacity: 0;
-      transform: translate(-50%, -50%);
-    }
+    .content { position: relative; z-index: 10; }
   </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
@@ -72,47 +36,50 @@
   <nav class="fixed top-0 w-full bg-white/90 dark:bg-gray-950/90 backdrop-blur-lg z-50 border-b border-gray-200 dark:border-gray-800">
     <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
       <h1 class="text-2xl font-bold">Alos Louis</h1>
-      
       <div class="hidden md:flex items-center gap-8 text-lg">
-        <a href="#about" class="cursor-hover hover:text-blue-600 transition">Về tôi</a>
-        <a href="#skills" class="cursor-hover hover:text-blue-600 transition">Kỹ năng</a>
-        <a href="#projects" class="cursor-hover hover:text-blue-600 transition">Dự án</a>
-        <a href="#contact" class="cursor-hover hover:text-blue-600 transition">Liên hệ</a>
+        <a href="#about" class="cursor-hover hover:text-blue-400 transition">Về tôi</a>
+        <a href="#skills" class="cursor-hover hover:text-blue-400 transition">Kỹ năng</a>
+        <a href="#projects" class="cursor-hover hover:text-blue-400 transition">Dự án</a>
+        <a href="#contact" class="cursor-hover hover:text-blue-400 transition">Liên hệ</a>
       </div>
-
       <div class="flex items-center gap-4">
         <button id="theme-toggle" class="cursor-hover text-2xl p-3 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-800 transition">
           <i class="fa-solid fa-moon"></i>
         </button>
-        <button id="menu-btn" class="md:hidden text-3xl cursor-hover">☰</button>
       </div>
     </div>
   </nav>
 
-  <!-- Hero with Parallax -->
+  <!-- Hero -->
   <section id="hero" class="hero-bg min-h-screen flex items-center relative">
-    <!-- Parallax Layers -->
-    <div class="parallax-layer layer-1" id="layer1"></div>
-    <div class="parallax-layer layer-2" id="layer2"></div>
-    <div class="parallax-layer layer-3" id="layer3"></div>
+    <canvas id="particles"></canvas>
 
-    <div class="max-w-6xl mx-auto px-6 text-center relative z-10 pt-20">
-      <h2 class="text-5xl md:text-7xl font-bold mb-6">Xin chào, mình là <span class="text-blue-400">Alos Louis</span></h2>
-      <p class="text-2xl md:text-3xl text-gray-400 mb-8">Full-Stack Developer</p>
-      <p class="max-w-2xl mx-auto text-lg text-gray-300 mb-12">Tạo ra những website đẹp, nhanh và mang lại giá trị thực sự.</p>
+    <!-- Âm thanh vũ trụ động -->
+    <audio id="space-audio" loop preload="auto">
+      <source src="https://assets.mixkit.co/sfx/preview/296/296.wav" type="audio/wav">
+    </audio>
+
+    <div class="max-w-6xl mx-auto px-6 text-center relative z-10 pt-20 content">
+      <h2 class="text-5xl md:text-7xl font-bold mb-6 text-white">Xin chào, mình là <span class="text-blue-400">Alos Louis</span></h2>
+      <p class="text-2xl md:text-3xl text-gray-300 mb-8">Full-Stack Developer</p>
+      <p class="max-w-2xl mx-auto text-lg text-gray-400 mb-12">Khám phá vũ trụ code cùng mình...</p>
       
       <div class="flex flex-wrap justify-center gap-5">
         <a href="#projects" class="cursor-hover px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-2xl font-medium text-lg transition">Xem Dự Án</a>
-        <a href="#contact" class="cursor-hover px-8 py-4 border-2 border-white/70 hover:bg-white/10 rounded-2xl font-medium text-lg transition">Liên hệ</a>
+        
+        <button id="sound-toggle" 
+                class="cursor-hover px-6 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl font-medium text-lg transition flex items-center gap-3">
+          <i id="sound-icon" class="fa-solid fa-volume-high"></i>
+          <span id="sound-text">Bật âm thanh vũ trụ</span>
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Các section khác -->
   <section id="about" class="py-24 bg-white dark:bg-gray-900">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-12">Về tôi</h2>
-      <!-- Nội dung về tôi -->
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-12">Về tôi</h2>
+      <p class="max-w-2xl mx-auto text-lg">Lập trình viên đam mê công nghệ và thiết kế những trải nghiệm tuyệt vời.</p>
     </div>
   </section>
 
@@ -121,59 +88,125 @@
   </footer>
 
   <script>
-    // Parallax Effect
-    const layer1 = document.getElementById('layer1');
-    const layer2 = document.getElementById('layer2');
-    const layer3 = document.getElementById('layer3');
+    // ============== INTERACTIVE PARTICLES ==============
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: 0, y: 0, radius: 180 };
 
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      
-      layer1.style.transform = `translateY(${scrollY * 0.2}px)`;
-      layer2.style.transform = `translateY(${scrollY * 0.35}px)`;
-      layer3.style.transform = `translateY(${scrollY * 0.5}px)`;
-    });
-
-    // Custom Cursor + Trail
-    const cursor = document.getElementById('custom-cursor');
-    const trails = [];
-    const trailCount = 8;
-
-    for (let i = 0; i < trailCount; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'trail-dot';
-      document.body.appendChild(dot);
-      trails.push(dot);
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.2 + 0.8;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+      }
+      update() {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.hypot(dx, dy);
+        
+        if (dist < mouse.radius && dist > 0) {
+          this.speedX += (dx / dist) * 1.2;
+          this.speedY += (dy / dist) * 1.2;
+        }
+        
+        this.x += this.speedX;
+        this.y += this.speedY;
+        
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -0.92;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -0.92;
+      }
+      draw() {
+        ctx.fillStyle = `rgba(147, 197, 253, 0.95)`;
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = "#60a5fa";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
 
-    let mouseX = 0, mouseY = 0;
-    let prevX = 0, prevY = 0;
+    function initParticles() {
+      particles = [];
+      const count = window.innerWidth < 768 ? 100 : 200;
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
 
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
-
-      trails.forEach((dot, index) => {
-        const delay = index * 8;
-        dot.style.left = (prevX + (mouseX - prevX) * (index / trailCount)) + 'px';
-        dot.style.top = (prevY + (mouseY - prevY) * (index / trailCount)) + 'px';
-        dot.style.opacity = (1 - index / trailCount) * 0.6;
+    function animate() {
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.18)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(p => {
+        p.update();
+        p.draw();
       });
+      requestAnimationFrame(animate);
+    }
 
-      prevX = mouseX;
-      prevY = mouseY;
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initParticles();
     });
 
-    // Hover effect
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(1.8)');
-      el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initParticles();
+    animate();
+
+    document.addEventListener('mousemove', e => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
     });
 
-    // Theme Toggle
+    // ============== ÂM THANH VŨ TRỤ ĐỘNG ==============
+    const audio = document.getElementById('space-audio');
+    const soundBtn = document.getElementById('sound-toggle');
+    const soundIcon = document.getElementById('sound-icon');
+    const soundText = document.getElementById('sound-text');
+    let isPlaying = false;
+
+    // Tối ưu âm thanh
+    audio.volume = 0.4;
+
+    function updateAudioVolume() {
+      if (!isPlaying) return;
+      // Volume động theo vị trí chuột (gần giữa màn hình = to hơn)
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const distFromCenter = Math.hypot(mouse.x - centerX, mouse.y - centerY);
+      const maxDist = Math.hypot(centerX, centerY);
+      const volume = 0.25 + (1 - distFromCenter / maxDist) * 0.45;
+      audio.volume = Math.max(0.15, Math.min(0.7, volume));
+    }
+
+    setInterval(updateAudioVolume, 100);
+
+    soundBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        soundIcon.classList.replace('fa-volume-high', 'fa-volume-xmark');
+        soundText.textContent = "Tắt âm thanh";
+      } else {
+        audio.play().then(() => {
+          soundIcon.classList.replace('fa-volume-xmark', 'fa-volume-high');
+          soundText.textContent = "Đang phát...";
+        }).catch(() => {
+          alert("Click vào trang trước để bật âm thanh (do chính sách trình duyệt)");
+        });
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // ============== CUSTOM CURSOR + THEME ==============
+    const cursor = document.getElementById('custom-cursor');
+    // ... (code cursor trail nếu bạn muốn giữ)
+
     const themeToggle = document.getElementById('theme-toggle');
     const icon = themeToggle.querySelector('i');
     const html = document.documentElement;
@@ -188,11 +221,6 @@
         icon.classList.replace('fa-moon', 'fa-sun');
         localStorage.theme = 'dark';
       }
-    }
-
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      html.classList.add('dark');
-      icon.classList.replace('fa-moon', 'fa-sun');
     }
 
     themeToggle.addEventListener('click', toggleTheme);
